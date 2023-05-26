@@ -18,10 +18,10 @@ class WeatherProvider extends ChangeNotifier
     CityListModel(lat:"31.1048" ,long: "77.1734",name: "Shimla"),
   ];
   List citiList=[
-    'surat','ladakh',"Shimla"
+    'Surat','Ladakh',"Shimla"
   ];
 
-  String selectCiti='surat';
+  String selectCiti='Surat';
   int index=0;
   void chnageCity(String value)
   {
@@ -32,16 +32,16 @@ class WeatherProvider extends ChangeNotifier
   String image='assets/image/sun.png';
   void tempchange(double temp)
   {
-    if(temp>=30)
+    if(temp>=300)
       {
         image= 'assets/image/sunny.png';
       }
-    else if(temp>=25)
+    else if(temp>=250)
       {
         image= 'assets/image/sun.png';
 
       }
-    else if(temp>=20)
+    else if(temp>=200)
       {
         image='asstes/image/cloude.png';
       }

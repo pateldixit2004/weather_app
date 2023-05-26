@@ -23,6 +23,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         if(snapshot.hasData)
           {
             WeatherModal? weatherModal =snapshot.data;
+            providerF!.tempchange(weatherModal!.main!.temp!);
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
