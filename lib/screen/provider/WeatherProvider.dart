@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:weather_app/screen/model/cityListModel.dart';
 import 'package:weather_app/screen/model/weatherModal.dart';

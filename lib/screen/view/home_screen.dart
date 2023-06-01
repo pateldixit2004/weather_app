@@ -60,7 +60,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        tile(data: '${weatherModal!.wind!.speed}',ti: 'wind'),
+                        tile(data: '${weatherModal!.wind!.speed}',ti: 'wind',img: 'assets/image/img.png'),
                       ],
                     ),
                   )
@@ -72,17 +72,19 @@ class _Home_ScreenState extends State<Home_Screen> {
           {
             return Text("${snapshot.hasError}");
           }
-        return CircularProgressIndicator();
+        return Center(child: CircularProgressIndicator());
       },future: providerF!.weatherget(providerT!.citi[providerT!.index].lat,providerT!.citi[providerT!.index].long),
     ),));
   }
-  Widget tile({String? data, String? ti})
+  Widget tile({String? data, String? ti,String? img})
   {
     return Container(
       height: 25.h,
-      width: 30.w,
+      width: 20.w,
       child: Column(
         children: [
+          Image.asset("$img"),
+          Spacer(),
           Text("$data"),
           Text("$ti"),
         ],
