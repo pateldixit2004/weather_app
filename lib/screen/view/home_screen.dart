@@ -33,7 +33,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.location_on_rounded,color: Colors.white54,size: 20.sp,),
-                      DropdownButton(items: providerF!.citiList!.map((e) => DropdownMenuItem(child: Text("$e"),value: e,)).toList(), onChanged: (value) {
+                      DropdownButton(items: providerF!.citiList.map((e) => DropdownMenuItem(child: Text("$e"),value: e,)).toList(), onChanged: (value) {
                         providerF!.chnageCity(value as String);
                       },
                       value: providerT!.selectCiti,)
@@ -42,25 +42,46 @@ class _Home_ScreenState extends State<Home_Screen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
-
+                        mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('${providerT!.image}')
+                        Image.asset('${providerT!.image}',height: 60.h,width: 50.w,)
                       ],
                     ),
                   ),
-                  Text("${weatherModal!.weather![0].description}"),
+                  Text("${weatherModal.weather![0].description}"),
                   Row(
                     children: [
-                      Text("${weatherModal!.main!.temp}C"),
-                      Text("${weatherModal!.weather![0].main}C"),
+                      Text("Temp-${weatherModal.main!.temp}°C",style: TextStyle(color: Colors.orange),),
+                      // Text("${weatherModal.weather![0].main} "),
                     ],
                   ),
+                  SizedBox(height: 10,),
+                  Row(
+                    children: [
+
+                      Text("humidity-${weatherModal.main!.humidity}",style: TextStyle(color: Colors.black45),),
+                      // Text("${weatherModal.weather![0].main} "),
+                    ],
+                  ),
+
+                  SizedBox(height: 10,),
+                  Row(
+                    children: [
+                      Text("pressure-${weatherModal.main!.pressure}"),
+                      SizedBox(height: 10,),
+                      Text("${weatherModal.weather![0].id} "),
+                    ],
+                  ),
+
+                  SizedBox(height: 10,),
                   Spacer(),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        tile(data: '${weatherModal!.wind!.speed}',ti: 'wind',img: 'assets/image/img.png'),
+                        tile(data: '${weatherModal.wind!.speed}',ti: 'wind',img: 'assets/image/img.png'),
+                        tile(data: '${weatherModal.wind!.gust}',ti: 'gust',img: 'assets/image/img.png'),
                       ],
                     ),
                   )
@@ -78,17 +99,13 @@ class _Home_ScreenState extends State<Home_Screen> {
   }
   Widget tile({String? data, String? ti,String? img})
   {
-    return Container(
-      height: 25.h,
-      width: 20.w,
-      child: Column(
-        children: [
-          Image.asset("$img"),
-          Spacer(),
-          Text("$data"),
-          Text("$ti"),
-        ],
-      ),
+    return Column(
+      children: [
+        Container(height: 50,width:50,child: Image.asset("$img",height: 30,width: 30,)),
+
+        Text("$data"),
+        Text("$ti"),
+      ],
     );
 
   }
